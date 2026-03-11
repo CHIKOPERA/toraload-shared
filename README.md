@@ -1,4 +1,4 @@
-# @chikopera/shared
+# @chikopera/toraload-shared
 
 Shared enums, schemas, types, constants, and WebSocket message definitions used by the Toraload backend, admin, and mobile apps.
 
@@ -16,7 +16,7 @@ Shared enums, schemas, types, constants, and WebSocket message definitions used 
 2. Install the package:
 
 ```bash
-pnpm add @chikopera/shared
+pnpm add @chikopera/toraload-shared
 ```
 
 ## Development (this repo)
@@ -34,10 +34,10 @@ The package is automatically published to [GitHub Packages](https://github.com/C
 
 | Path | Contents |
 |------|----------|
-| `@chikopera/shared` | All exports (enums, schemas, types, constants, websocket) |
-| `@chikopera/shared/payment-methods` | Pesepay payment method utilities |
-| `@chikopera/shared/enums` | All domain enums |
-| `@chikopera/shared/schemas` | Zod validation schemas |
-| `@chikopera/shared/types` | Domain TypeScript interfaces |
-| `@chikopera/shared/constants` | Business constants |
-| `@chikopera/shared/websocket` | WebSocket message types |
+| `@chikopera/toraload-shared` | All exports (enums, schemas, types, constants, websocket) |
+| `@chikopera/toraload-shared/payment-methods` | Pesepay payment method utilities |
+| `@chikopera/toraload-shared/enums` | All domain enums |
+| `@chikopera/toraload-shared/schemas` | Zod validation schemas |
+| `@chikopera/toraload-shared/types` | Domain TypeScript interfaces |
+| `@chikopera/toraload-shared/constants` | Business constants |
+| `@chikopera/toraload-shared/websocket` | WebSocket message types |
