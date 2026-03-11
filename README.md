@@ -2,28 +2,33 @@
 
 Shared enums, schemas, types, constants, and WebSocket message definitions used by the Toraload backend, admin, and mobile apps.
 
-## Install
+## Install (consuming apps)
+
+1. Add the following to your app's `.npmrc`:
+
+```
+@toraload:registry=https://npm.pkg.github.com
+//npm.pkg.github.com/:_authToken=YOUR_GITHUB_PAT
+```
+
+> The PAT needs at least the `read:packages` scope. For CI, use `${{ secrets.GITHUB_TOKEN }}`.
+
+2. Install the package:
+
+```bash
+pnpm add @toraload/shared
+```
+
+## Development (this repo)
 
 ```bash
 pnpm install
+pnpm build      # compile to dist/
 ```
 
-## Build
+## Publishing
 
-```bash
-pnpm build
-```
-
-The compiled output is written to `dist/`.
-
-## Usage
-
-This package is consumed as a Git submodule in each app repo. After cloning an app repo, run:
-
-```bash
-git submodule update --init --recursive
-cd shared && pnpm install && pnpm build
-```
+The package is automatically published to [GitHub Packages](https://github.com/orgs/toraload/packages) on every push to `master` via the GitHub Actions workflow.
 
 ## Exports
 

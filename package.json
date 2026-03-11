@@ -38,11 +38,17 @@
         "typecheck": "tsc --noEmit",
         "prepare": "pnpm build"
     },
+    "files": [
+        "dist"
+    ],
     "dependencies": {
         "zod": "^3.22.4"
     },
     "devDependencies": {
         "@types/node": "^20.11.5",
         "typescript": "^5.3.3"
+    },
+    "publishConfig": {
+        "registry": "https://npm.pkg.github.com"
     }
 }
