@@ -1,4 +1,4 @@
-# @toraload/shared
+# @chikopera/shared
 
 Shared enums, schemas, types, constants, and WebSocket message definitions used by the Toraload backend, admin, and mobile apps.
 
@@ -7,7 +7,7 @@ Shared enums, schemas, types, constants, and WebSocket message definitions used 
 1. Add the following to your app's `.npmrc`:
 
 ```
-@toraload:registry=https://npm.pkg.github.com
+@chikopera:registry=https://npm.pkg.github.com
 //npm.pkg.github.com/:_authToken=YOUR_GITHUB_PAT
 ```
 
@@ -16,7 +16,7 @@ Shared enums, schemas, types, constants, and WebSocket message definitions used 
 2. Install the package:
 
 ```bash
-pnpm add @toraload/shared
+pnpm add @chikopera/shared
 ```
 
 ## Development (this repo)
@@ -28,16 +28,16 @@ pnpm build      # compile to dist/
 
 ## Publishing
 
-The package is automatically published to [GitHub Packages](https://github.com/orgs/toraload/packages) on every push to `master` via the GitHub Actions workflow.
+The package is automatically published to [GitHub Packages](https://github.com/CHIKOPERA?tab=packages) on every push to `master` via the GitHub Actions workflow.
 
 ## Exports
 
 | Path | Contents |
 |------|----------|
-| `@toraload/shared` | All exports (enums, schemas, types, constants, websocket) |
-| `@toraload/shared/payment-methods` | Pesepay payment method utilities |
-| `@toraload/shared/enums` | All domain enums |
-| `@toraload/shared/schemas` | Zod validation schemas |
-| `@toraload/shared/types` | Domain TypeScript interfaces |
-| `@toraload/shared/constants` | Business constants |
-| `@toraload/shared/websocket` | WebSocket message types |
+| `@chikopera/shared` | All exports (enums, schemas, types, constants, websocket) |
+| `@chikopera/shared/payment-methods` | Pesepay payment method utilities |
+| `@chikopera/shared/enums` | All domain enums |
+| `@chikopera/shared/schemas` | Zod validation schemas |
+| `@chikopera/shared/types` | Domain TypeScript interfaces |
+| `@chikopera/shared/constants` | Business constants |
+| `@chikopera/shared/websocket` | WebSocket message types |
