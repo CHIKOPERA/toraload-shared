@@ -1,5 +1,5 @@
 {
-    "name": "@chikopera/toraload-shared",
+    "name": "toraload-shared",
     "version": "1.0.0",
     "main": "./dist/index.js",
     "types": "./dist/index.d.ts",
@@ -49,6 +49,7 @@
         "typescript": "^5.3.3"
     },
     "publishConfig": {
-        "registry": "https://npm.pkg.github.com"
+        "registry": "https://registry.npmjs.org/",
+        "access": "public"
     }
 }

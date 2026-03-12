@@ -1,22 +1,13 @@
-# @chikopera/toraload-shared
+# toraload-shared
 
 Shared enums, schemas, types, constants, and WebSocket message definitions used by the Toraload backend, admin, and mobile apps.
 
 ## Install (consuming apps)
 
-1. Add the following to your app's `.npmrc`:
-
-```
-@chikopera:registry=https://npm.pkg.github.com
-//npm.pkg.github.com/:_authToken=YOUR_GITHUB_PAT
-```
-
-> The PAT needs at least the `read:packages` scope. For CI, use `${{ secrets.GITHUB_TOKEN }}`.
-
-2. Install the package:
+For public npmjs installs nothing special is required. From any consuming project run:
 
 ```bash
-pnpm add @chikopera/toraload-shared
+pnpm add toraload-shared
 ```
 
 ## Development (this repo)
@@ -28,7 +19,13 @@ pnpm build      # compile to dist/
 
 ## Publishing
 
-The package is automatically published to [GitHub Packages](https://github.com/CHIKOPERA?tab=packages) on every push to `master` via the GitHub Actions workflow.
+The package is automatically published to npmjs on every push to `main` via GitHub Actions. Before first publish you must:
+
+1. Create an npm account (https://www.npmjs.com/signup)
+2. Create an automation token on https://www.npmjs.com/settings/<your-username>/tokens
+3. Add the token to this repo's GitHub secrets as `NPM_TOKEN`
+
+The workflow uses `NPM_TOKEN` to publish. The package is published as public, so installing it does not require authentication.
 
 ## Exports
 
