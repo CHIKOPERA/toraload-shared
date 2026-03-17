@@ -212,6 +212,30 @@ export const ResendCodeSchema = z.object({
 export type ResendCodeInput = z.infer<typeof ResendCodeSchema>
 
 /**
+ * Forgot password schema
+ * Accepts phone number or email address
+ */
+export const ForgotPasswordSchema = z.object({
+    identifier: z.string().min(1, 'Email or phone number is required'),
+})
+
+export type ForgotPasswordInput = z.infer<typeof ForgotPasswordSchema>
+
+/**
+ * Reset password schema
+ */
+export const ResetPasswordSchema = z.object({
+    userId: z.string(),
+    code: z
+        .string()
+        .length(6)
+        .regex(/^\d{6}$/, 'Code must be 6 digits'),
+    newPassword: z.string().min(8, 'Password must be at least 8 characters').max(128),
+})
+
+export type ResetPasswordInput = z.infer<typeof ResetPasswordSchema>
+
+/**
  * Region configuration schema
  */
 export const RegionConfigSchema = z.object({
