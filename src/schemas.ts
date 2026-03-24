@@ -32,7 +32,7 @@ export type Location = z.infer<typeof LocationSchema>
 export const CreateJobSchema = z.object({
     pickupLocation: LocationSchema,
     dropoffLocation: LocationSchema,
-    loadDescription: z.string().min(10).max(500),
+    loadDescription: z.string().min(3).max(500),
     estimatedWeight: z.number().positive().optional(),
     specialInstructions: z.string().max(1000).optional(),
     extraLifters: z.number().int().min(0).max(5).default(0),
