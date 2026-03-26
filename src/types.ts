@@ -121,6 +121,19 @@ export interface Customer {
 }
 
 /**
+ * Chat message (per-job conversation between customer and driver)
+ */
+export interface ChatMessage {
+    id: string
+    jobId: string
+    senderId: string
+    senderName: string
+    senderRole: 'customer' | 'driver'
+    content: string
+    createdAt: string
+}
+
+/**
  * Ops action (audit log)
  */
 export interface OpsAction {

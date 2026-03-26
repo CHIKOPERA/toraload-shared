@@ -38,6 +38,12 @@ export enum WsMessageType {
     PAYMENT_COMPLETED = 'PAYMENT_COMPLETED',
     PAYMENT_FAILED = 'PAYMENT_FAILED',
 
+    // Client -> Server - Chat
+    SEND_CHAT_MESSAGE = 'SEND_CHAT_MESSAGE',
+
+    // Server -> Client - Chat
+    CHAT_MESSAGE = 'CHAT_MESSAGE',
+
     // Common
     ERROR = 'ERROR',
     PING = 'PING',
@@ -207,12 +213,34 @@ export interface PaymentFailedPayload {
     retryable: boolean
 }
 
+/**
+ * Chat message payload (Client -> Server: send a message)
+ */
+export interface SendChatMessagePayload {
+    jobId: string
+    content: string
+}
+
+/**
+ * Chat message payload (Server -> Client: receive a message)
+ */
+export interface ChatMessagePayload {
+    id: string
+    jobId: string
+    senderId: string
+    senderName: string
+    senderRole: 'customer' | 'driver'
+    content: string
+    createdAt: string
+}
+
 // Discriminated union types for type-safe message handling
 export type WsClientMessage =
     | (WsMessage<JobSubscriptionPayload> & { type: WsMessageType.SUBSCRIBE_JOB })
     | (WsMessage<JobSubscriptionPayload> & { type: WsMessageType.UNSUBSCRIBE_JOB })
     | (WsMessage<Record<string, never>> & { type: WsMessageType.SUBSCRIBE_DRIVER_JOBS })
     | (WsMessage<DriverLocationPayload> & { type: WsMessageType.DRIVER_LOCATION_UPDATE })
+    | (WsMessage<SendChatMessagePayload> & { type: WsMessageType.SEND_CHAT_MESSAGE })
     | (WsMessage<Record<string, never>> & { type: WsMessageType.PING })
 
 export type WsServerMessage =
@@ -240,6 +268,8 @@ export type WsServerMessage =
     | (WsMessage<PaymentProcessingPayload> & { type: WsMessageType.PAYMENT_PROCESSING })
     | (WsMessage<PaymentCompletedPayload> & { type: WsMessageType.PAYMENT_COMPLETED })
     | (WsMessage<PaymentFailedPayload> & { type: WsMessageType.PAYMENT_FAILED })
+    // Chat
+    | (WsMessage<ChatMessagePayload> & { type: WsMessageType.CHAT_MESSAGE })
     // Common
     | (WsMessage<WsErrorPayload> & { type: WsMessageType.ERROR })
     | (WsMessage<Record<string, never>> & { type: WsMessageType.PONG })
