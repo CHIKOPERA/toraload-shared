@@ -39,6 +39,7 @@ export const CreateJobSchema = z.object({
     scheduledAt: z.string().datetime().optional(), // ISO 8601 datetime string
     paymentMethod: z.string().default('CASH'), // Accept any payment method code (CASH, ECOCASH, PZW211, etc.)
     requiredVehicleCategory: z.nativeEnum(VehicleCategory).default(VehicleCategory.MEDIUM_BAKKIE),
+    customerPrice: z.number().positive().optional(), // Customer-suggested price (guides driver bidding)
 })
 
 export type CreateJobInput = z.infer<typeof CreateJobSchema>
