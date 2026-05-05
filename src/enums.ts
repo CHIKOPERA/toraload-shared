@@ -43,6 +43,7 @@ export const STATE_TRANSITIONS: Record<JobState, JobState[]> = {
     ],
     [JobState.NEGOTIATING]: [
         JobState.AGREED,
+        JobState.ASSIGNED, // Direct transition for cash payments (skips AGREED)
         JobState.CANCELLED,
         JobState.CANCELLED_BY_CUSTOMER,
         JobState.CANCELLED_BY_OPS,
@@ -61,7 +62,7 @@ export const STATE_TRANSITIONS: Record<JobState, JobState[]> = {
         JobState.CANCELLED_BY_OPS,
         JobState.FAILED,
     ],
-    [JobState.PAYMENT_CONFIRMED]: [JobState.REQUESTED],
+    [JobState.PAYMENT_CONFIRMED]: [JobState.REQUESTED, JobState.ASSIGNED],
     [JobState.REQUESTED]: [
         JobState.ASSIGNED,
         JobState.CANCELLED,
@@ -126,7 +127,6 @@ export enum PaymentMethod {
 export enum PaymentProvider {
     ECOCASH = 'ECOCASH',
     PESEPAY = 'PESEPAY',
-    MOCK = 'MOCK', // For testing
 }
 
 /**

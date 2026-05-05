@@ -7,7 +7,7 @@ export const DEFAULT_MAX_DISTANCE_KM = 40
 export const MIN_DISTANCE_KM = 1
 
 // Commission
-export const DEFAULT_COMMISSION_RATE = 0.15 // 15%
+export const DEFAULT_COMMISSION_RATE = 0.10 // 10%
 
 // Timeouts (in minutes)
 export const DEFAULT_PAYMENT_TIMEOUT = 10

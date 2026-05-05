@@ -38,6 +38,9 @@ export enum WsMessageType {
     PAYMENT_COMPLETED = 'PAYMENT_COMPLETED',
     PAYMENT_FAILED = 'PAYMENT_FAILED',
 
+    // Server -> Client - Wallet
+    WALLET_TOPUP_CONFIRMED = 'WALLET_TOPUP_CONFIRMED',
+
     // Client -> Server - Chat
     SEND_CHAT_MESSAGE = 'SEND_CHAT_MESSAGE',
 

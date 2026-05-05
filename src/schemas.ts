@@ -285,6 +285,7 @@ export const UploadVehicleSchema = z.object({
     vehicleBackPhotoUrl: z.string().url(),
     vehicleMake: z.string().min(2).max(50),
     vehicleModel: z.string().min(2).max(50),
+    vehicleColor: z.string().min(2).max(50),
     vehicleCapacityTons: z.number().min(0.5).max(10),
     vehicleCategory: z.nativeEnum(VehicleCategory),
 })
