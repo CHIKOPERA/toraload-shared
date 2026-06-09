@@ -9,6 +9,8 @@ export enum WsMessageType {
     UNSUBSCRIBE_JOB = 'UNSUBSCRIBE_JOB',
     SUBSCRIBE_DRIVER_JOBS = 'SUBSCRIBE_DRIVER_JOBS',
     DRIVER_LOCATION_UPDATE = 'DRIVER_LOCATION_UPDATE',
+    // Client -> Server: sent on reconnect so server can replay missed messages
+    RECONNECT = 'RECONNECT',
 
     // Server -> Client - Job Lifecycle
     JOB_UPDATED = 'JOB_UPDATED',
