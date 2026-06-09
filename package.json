@@ -1,5 +1,5 @@
 {
-    "name": "toraload-shared",
+    "name": "@chikopera/toraload-shared",
     "version": "1.0.10",
     "main": "./dist/index.js",
     "types": "./dist/index.d.ts",
