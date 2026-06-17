@@ -89,8 +89,11 @@ export interface JobSubscriptionPayload {
  */
 export interface JobStateChangePayload {
     jobId: string
-    previousState: string
-    newState: string
+    fromState?: string | null
+    toState?: string
+    previousState?: string | null
+    newState?: string
+    state?: string
     job: unknown // Use specific Job type when importing
 }
 
