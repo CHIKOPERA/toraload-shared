@@ -86,8 +86,6 @@ export type LocationUpdate = z.infer<typeof LocationUpdateSchema>
  */
 export const CompleteJobSchema = z.object({
     jobId: z.string().uuid(),
-    completionProofUrl: z.string().url(),
-    notes: z.string().max(500).optional(),
 })
 
 export type CompleteJobInput = z.infer<typeof CompleteJobSchema>
