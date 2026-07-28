@@ -91,6 +91,21 @@ export const CompleteJobSchema = z.object({
 export type CompleteJobInput = z.infer<typeof CompleteJobSchema>
 
 /**
+ * Pickup PIN — proof-of-physical-handoff code shown to the customer and
+ * entered by the driver before a non-cash job can start (EN_ROUTE -> IN_PROGRESS)
+ */
+export const PickupPinCodeSchema = z
+    .string()
+    .length(4)
+    .regex(/^\d{4}$/)
+
+export const StartJobSchema = z.object({
+    pin: PickupPinCodeSchema.optional(),
+})
+
+export type StartJobInput = z.infer<typeof StartJobSchema>
+
+/**
  * Cancellation schema
  */
 export const CancelJobSchema = z.object({

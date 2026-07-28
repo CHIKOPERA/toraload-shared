@@ -33,6 +33,7 @@ export enum WsMessageType {
     DRIVER_ARRIVED_PICKUP = 'DRIVER_ARRIVED_PICKUP',
     DRIVER_ARRIVED_DROPOFF = 'DRIVER_ARRIVED_DROPOFF',
     ETA_UPDATED = 'ETA_UPDATED',
+    PICKUP_PIN_READY = 'PICKUP_PIN_READY',
 
     // Server -> Client - Payment
     PAYMENT_UPDATE = 'PAYMENT_UPDATE',
@@ -195,6 +196,16 @@ export interface ETAUpdatePayload {
 }
 
 /**
+ * Pickup PIN ready payload — customer-only broadcast, never sent to the driver
+ */
+export interface PickupPinReadyPayload {
+    jobId: string
+    pin: string
+    expiresAt?: string
+    regenerated?: boolean
+}
+
+/**
  * Payment processing payload
  */
 export interface PaymentProcessingPayload {
@@ -271,6 +282,7 @@ export type WsServerMessage =
     | (WsMessage<DriverArrivedPayload> & { type: WsMessageType.DRIVER_ARRIVED_PICKUP })
     | (WsMessage<DriverArrivedPayload> & { type: WsMessageType.DRIVER_ARRIVED_DROPOFF })
     | (WsMessage<ETAUpdatePayload> & { type: WsMessageType.ETA_UPDATED })
+    | (WsMessage<PickupPinReadyPayload> & { type: WsMessageType.PICKUP_PIN_READY })
     // Payment
     | (WsMessage<PaymentUpdatePayload> & { type: WsMessageType.PAYMENT_UPDATE })
     | (WsMessage<PaymentProcessingPayload> & { type: WsMessageType.PAYMENT_PROCESSING })
