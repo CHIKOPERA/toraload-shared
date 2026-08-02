@@ -336,3 +336,31 @@ export const GetUploadUrlSchema = z.object({
 })
 
 export type GetUploadUrlInput = z.infer<typeof GetUploadUrlSchema>
+
+/** Field-assisted driver onboarding application. Passwords and OTPs are never draft fields. */
+export const FieldDriverOnboardingSchema = z.object({
+    clientDraftId: z.string().uuid(),
+    firstName: z.string().min(1).max(80),
+    lastName: z.string().min(1).max(80),
+    phone: z.string().regex(/^(\+263|0)\d{9}$/),
+    email: z.string().email().nullable().optional(),
+    city: z.string().min(1).max(100),
+    licenseNumber: z.string().min(1).max(80),
+    licenseClass: z.nativeEnum(LicenseClass),
+    idType: z.enum(['NATIONAL_ID', 'PASSPORT']),
+    vehicleRegistration: z.string().min(1).max(80),
+    vehicleCategory: z.nativeEnum(VehicleCategory),
+    vehicleMake: z.string().min(2).max(50),
+    vehicleModel: z.string().min(2).max(50),
+    vehicleColor: z.string().min(2).max(50),
+    vehicleCapacityTons: z.number().min(0.5).max(10),
+    licenseSelfieUrl: z.string().url(),
+    idDocumentUrl: z.string().url(),
+    vehicleFrontPhotoUrl: z.string().url(),
+    vehicleBackPhotoUrl: z.string().url(),
+    consentAccepted: z.literal(true),
+    termsVersion: z.string().min(1).max(40),
+    privacyVersion: z.string().min(1).max(40),
+})
+
+export type FieldDriverOnboardingInput = z.infer<typeof FieldDriverOnboardingSchema>

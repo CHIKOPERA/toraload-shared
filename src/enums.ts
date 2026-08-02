@@ -176,6 +176,20 @@ export enum UserRole {
     CUSTOMER = 'CUSTOMER',
     DRIVER = 'DRIVER',
     ADMIN = 'ADMIN',
+    FIELD_AGENT = 'FIELD_AGENT',
+}
+
+export enum DriverOnboardingApplicationStatus {
+    DRAFT = 'DRAFT',
+    AWAITING_PHONE_VERIFICATION = 'AWAITING_PHONE_VERIFICATION',
+    READY_TO_SUBMIT = 'READY_TO_SUBMIT',
+    SUBMITTED = 'SUBMITTED',
+    EXPIRED = 'EXPIRED',
+}
+
+export enum IdentityDocumentType {
+    NATIONAL_ID = 'NATIONAL_ID',
+    PASSPORT = 'PASSPORT',
 }
 
 /**

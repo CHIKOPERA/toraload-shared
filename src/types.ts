@@ -139,10 +139,42 @@ export interface ChatMessage {
 export interface OpsAction {
     id: string
     adminId: string
-    entityType: 'job' | 'payment' | 'driver' | 'customer'
+    entityType: 'job' | 'payment' | 'driver' | 'customer' | 'driver_onboarding' | 'field_agent'
     entityId: string
     action: string
     reason: string
     details?: Record<string, any>
     createdAt: Date
+}
+
+export interface DriverOnboardingApplication {
+    id: string
+    clientDraftId: string
+    fieldAgentUserId: string
+    driverId?: string | null
+    status: import('./enums').DriverOnboardingApplicationStatus
+    firstName?: string | null
+    lastName?: string | null
+    phone?: string | null
+    email?: string | null
+    city?: string | null
+    licenseNumber?: string | null
+    licenseClass?: import('./enums').LicenseClass | null
+    idType?: import('./enums').IdentityDocumentType | null
+    vehicleRegistration?: string | null
+    vehicleCategory?: VehicleCategory | null
+    vehicleMake?: string | null
+    vehicleModel?: string | null
+    vehicleColor?: string | null
+    vehicleCapacityTons?: number | null
+    licenseSelfieUrl?: string | null
+    idDocumentUrl?: string | null
+    vehicleFrontPhotoUrl?: string | null
+    vehicleBackPhotoUrl?: string | null
+    consentAccepted: boolean
+    phoneVerifiedAt?: string | null
+    submittedAt?: string | null
+    expiresAt: string
+    createdAt: string
+    updatedAt: string
 }
