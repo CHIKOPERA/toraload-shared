@@ -24,21 +24,33 @@ export interface Job {
         latitude: number
         longitude: number
         address: string
+        area?: string
+        suburb?: string
+        city?: string
+        region?: string
+        country?: string
     }
     dropoffLocation: {
         latitude: number
         longitude: number
         address: string
+        area?: string
+        suburb?: string
+        city?: string
+        region?: string
+        country?: string
     }
     loadDescription: string
     estimatedWeight?: number
     specialInstructions?: string
     extraLifters?: number // 0-5 extra helpers
     requiredVehicleCategory?: VehicleCategory
+    requiredVehicleFeature?: string
     scheduledAt?: Date // null means immediate/ASAP
     agreedPrice?: number
     commissionAmount?: number
     distance?: number // km
+    estimatedPrice?: number
     createdAt: Date
     updatedAt: Date
 }
@@ -55,6 +67,18 @@ export interface PriceProposal {
     notes?: string
     status: 'pending' | 'accepted' | 'rejected'
     createdAt: Date
+    driver?: {
+        id?: string
+        firstName: string
+        lastName: string
+        rating?: number
+        completedJobs?: number
+        vehicleRegistration?: string
+        vehicleMake?: string
+        vehicleModel?: string
+        vehicleColor?: string
+        vehicleFeature?: string
+    }
 }
 
 /**
@@ -85,6 +109,9 @@ export interface Driver {
     lastName: string
     vehicleCategory: VehicleCategory
     vehicleType?: string // Optional legacy free-text
+    vehicleFeature?: string
+    driverPhotoUrl?: string
+    vehicleFrontPhotoUrl?: string
     vehicleRegistration: string
     licenseNumber: string
     status: DriverStatus
@@ -163,6 +190,7 @@ export interface DriverOnboardingApplication {
     idType?: import('./enums').IdentityDocumentType | null
     vehicleRegistration?: string | null
     vehicleCategory?: VehicleCategory | null
+    vehicleFeature?: string | null
     vehicleMake?: string | null
     vehicleModel?: string | null
     vehicleColor?: string | null

@@ -20,7 +20,10 @@ export const LocationSchema = z.object({
     latitude: z.number().min(-90).max(90),
     longitude: z.number().min(-180).max(180),
     address: z.string().min(1),
+    area: z.string().optional(),
+    suburb: z.string().optional(),
     city: z.string().optional(),
+    region: z.string().optional(),
     country: z.string().optional(),
 })
 
@@ -39,6 +42,7 @@ export const CreateJobSchema = z.object({
     scheduledAt: z.string().datetime().optional(), // ISO 8601 datetime string
     paymentMethod: z.string().default('CASH'), // Accept any payment method code (CASH, ECOCASH, PZW211, etc.)
     requiredVehicleCategory: z.nativeEnum(VehicleCategory).default(VehicleCategory.MEDIUM_BAKKIE),
+    requiredVehicleFeature: z.enum(['STANDARD', 'COVERED_TRUCK', 'FLATBED', 'LOADING_CRANE', 'REFRIGERATED_TRUCK']).default('STANDARD'),
     customerPrice: z.number().positive().optional(), // Customer-suggested price (guides driver bidding)
 })
 
@@ -140,6 +144,7 @@ export const RegisterDriverSchema = z
         firstName: z.string().min(1),
         lastName: z.string().min(1),
         vehicleCategory: z.nativeEnum(VehicleCategory),
+        vehicleFeature: z.enum(['STANDARD', 'COVERED_TRUCK', 'FLATBED', 'LOADING_CRANE', 'REFRIGERATED_TRUCK']).default('STANDARD'),
         vehicleType: z.string().optional(), // Optional free-text description
         vehicleRegistration: z.string().min(1),
         licenseNumber: z.string().min(1),
@@ -301,6 +306,7 @@ export const UploadVehicleSchema = z.object({
     vehicleColor: z.string().min(2).max(50),
     vehicleCapacityTons: z.number().min(0.5).max(10),
     vehicleCategory: z.nativeEnum(VehicleCategory),
+    vehicleFeature: z.enum(['STANDARD', 'COVERED_TRUCK', 'FLATBED', 'LOADING_CRANE', 'REFRIGERATED_TRUCK']).default('STANDARD'),
 })
 
 export type UploadVehicleInput = z.infer<typeof UploadVehicleSchema>
@@ -350,6 +356,7 @@ export const FieldDriverOnboardingSchema = z.object({
     idType: z.enum(['NATIONAL_ID', 'PASSPORT']),
     vehicleRegistration: z.string().min(1).max(80),
     vehicleCategory: z.nativeEnum(VehicleCategory),
+    vehicleFeature: z.enum(['STANDARD', 'COVERED_TRUCK', 'FLATBED', 'LOADING_CRANE', 'REFRIGERATED_TRUCK']),
     vehicleMake: z.string().min(2).max(50),
     vehicleModel: z.string().min(2).max(50),
     vehicleColor: z.string().min(2).max(50),
