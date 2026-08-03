@@ -44,6 +44,8 @@ export const CreateJobSchema = z.object({
     requiredVehicleCategory: z.nativeEnum(VehicleCategory).default(VehicleCategory.MEDIUM_BAKKIE),
     requiredVehicleFeature: z.enum(['STANDARD', 'COVERED_TRUCK', 'FLATBED', 'LOADING_CRANE', 'REFRIGERATED_TRUCK']).default('STANDARD'),
     customerPrice: z.number().positive().optional(), // Customer-suggested price (guides driver bidding)
+    referralCode: z.string().trim().min(4).max(20).optional(),
+    referralSource: z.string().trim().max(40).optional(),
 })
 
 export type CreateJobInput = z.infer<typeof CreateJobSchema>
@@ -149,6 +151,7 @@ export const RegisterDriverSchema = z
         vehicleRegistration: z.string().min(1),
         licenseNumber: z.string().min(1),
         city: z.string().min(1),
+        referralCode: z.string().trim().min(4).max(20).optional(),
     })
     .refine((data) => data.email || data.phone, {
         message: 'Either email or phone number is required',
