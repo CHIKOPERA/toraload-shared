@@ -118,6 +118,7 @@ export interface Driver {
     city: string
     rating?: number
     completedJobs: number
+    registrationSource?: string
     createdAt: Date
 }
 
